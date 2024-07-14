@@ -13,7 +13,13 @@
 In this repository, you will be able to follow along as I learn how to navigate through AWS. Not only am I learning the concepts and why things are done a certain way, but I am also gaining hands-on experience at the same time. I've chosen to utlize Adrian Cantill's AWS Certified Solutions Architect - Associate course for my training with the end goal of sitting for the exam and receiving my offical certification. 
 
 <h2>Contents</h2>
-[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#aws-root-user-accounts-general-and-production)
+
+- [AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#aws-root-user-accounts-general-and-production)
+- [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#iam-user-accounts-iamadmin)
+- [Access Keys](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#access-keys)
+- [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#iam-user-accounts-iamadmin)
+- [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups)
+- [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#simple-storage-service-s3)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
