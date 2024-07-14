@@ -18,7 +18,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 - [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-user-accounts-iamadmin)
 - [Access Keys](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#access-keys)
 - [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#virtual-private-cloud-vpc)
-- [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2)
+- [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups)
 - [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-storage-service-s3)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
