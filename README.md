@@ -14,12 +14,12 @@ In this repository, you will be able to follow along as I learn how to navigate 
 
 <h2>Contents</h2>
 
-- [AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA#aws-root-user-accounts-general-and-production#L25)
-- [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#iam-user-accounts-iamadmin)
-- [Access Keys](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#access-keys)
-- [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#iam-user-accounts-iamadmin)
-- [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups)
-- [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#simple-storage-service-s3)
+- [AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA#aws-root-user-accounts-general-and-production)
+- [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA#iam-user-accounts-iamadmin)
+- [Access Keys](https://github.com/anthonybastone1/AWS-SAA#access-keys)
+- [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA#virtual-private-cloud-vpc)
+- [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA#elastic-compute-cloud-ec2)
+- [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA#simple-storage-service-s3)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
