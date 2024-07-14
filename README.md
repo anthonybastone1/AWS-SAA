@@ -19,7 +19,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 - [Access Keys](https://github.com/anthonybastone1/AWS-SAA#access-keys)
 - [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA#virtual-private-cloud-vpc)
 - [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA#elastic-compute-cloud-ec2)
-- [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA#simple-storage-service-s3)
+- [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA#simple-storage-service-s3#L236)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
