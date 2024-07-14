@@ -14,7 +14,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 
 <h2>Contents</h2>
 
-- [AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA/main/README.md#aws-root-user-accounts-general-and-production)
+- [AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA/main/README.md#aws-root-user-accounts-general-and-production#L25)
 - [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA/main/README.md#iam-user-accounts-iamadmin)
 - [Access Keys](https://github.com/anthonybastone1/AWS-SAA/main/README.md#access-keys)
 - [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA/main/README.md#iam-user-accounts-iamadmin)
