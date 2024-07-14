@@ -3,13 +3,17 @@
 
 </p>
 
+<p align="center">
+(IN PROGRESS)
+</p>
+
 <h1>AWS Certified Solutions Architect - Associate Training</h1>
 
 <h2>Description</h2>
 In this repository, you will be able to follow along as I learn how to navigate through AWS. Not only am I learning the concepts and why things are done a certain way, but I am also gaining hands-on experience at the same time. I've chosen to utlize Adrian Cantill's AWS Certified Solutions Architect - Associate course for my training with the end goal of sitting for the exam and receiving my offical certification. 
 
 <h2>Contents</h2>
-[AWS Root User Accounts (General and Production)]
+[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA/edit/main/README.md#aws-root-user-accounts-general-and-production)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
@@ -30,7 +34,7 @@ In the images below, you will see the General and Production account names in th
 <img src="https://imgur.com/vvwdzw2.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/3DJNDt3.png"height="80%" width="80%"/>
+<img src="https://imgur.com/3DJNDt3.png" height="80%" width="80%"/>
 <br />
 <br />
 Next, I had to grant user/role access to billing information for the IAM users (IAMADMIN) that I will be creating. 
@@ -45,10 +49,11 @@ Once again, one image is for the AWS General account, and the other is for the A
 <img src="https://imgur.com/RaKWYgh.png" height="80%" width="80%"/>
 <br />
 <br />
+
 <h2>IAM User Accounts (iamadmin):</h2>
 
 <p align="center">
-<br />
+<br /> 
 Since IAM access has now been enabled, I can create my IAM users. IAM users are neither regionally nor globally specific, they are only specific to that single account. So the same name can be used for multiple accounts.
 <br />
 <br />
@@ -88,6 +93,7 @@ Once the user has been successfully created, I go to log out and log back in. Yo
 <img src="https://imgur.com/DCYxGhR.png" height="80%" width="80%"/>
 <br />
 <br />
+
 <h2>Access Keys:</h2>
 
 <p align="center">
@@ -147,6 +153,7 @@ I REPEAT THE SAME EXACT PROCESS FOR THE PRODUCTION ACCOUNT AND TYPE iamadmin-pro
 [END]
 <br/>
 <br/>
+ 
 <h2>Virtual Private Cloud (VPC):</h2>
 
 <p align="center">
@@ -158,6 +165,8 @@ After configuring the AWS CLI, I head back into my iamadmin general account and 
 <br />
 <br />
 While learning how to navigate through the different areas within the VPC, I notice there are 6 subnets within the default IPv4 address.
+<br/>
+<br/>
 <img src="https://imgur.com/ZP4T5rO.png" height="80%" width="80%"/>
 <br/>
 <br/>
@@ -167,6 +176,7 @@ As I scroll over, I come to understand that there are 6 subnets because there ar
 <img src="https://imgur.com/9n3Gfxe.png" height="80%" width="80%"/>
 <br />
 <br />
+
 <h2>Elastic Compute Cloud (EC2) Key Pairs, Instances, and Security Groups:</h2>
 
 <p align="center">
@@ -216,6 +226,7 @@ Now that I've launched and EC2 instance and connected to it via SSH client, I ca
 <img src="https://imgur.com/jn9J3Hn.png" height="80%" width="80%"/>
 <br />
 <br />
+ 
 <h2>Simple Storage Service (S3):</h2>
 
 <p align="center">
@@ -263,11 +274,17 @@ Now if I go back to the main bucket and open one of the objects, I'm presented w
 <br />
 <br />
 If I try to open the Object URL by just the link, it will return an access denied error as shown below.
+<br/>
+<br/>
 <img src="https://imgur.com/y9URLdC.png" height="80%" width="80%"/>
 <br />
 <br />
 <img src="https://imgur.com/J8iuPO4.png" height="80%" width="80%"/>
+<br />
+<br />
 But if I select the open tab in the top right of the overview screen, it will open. This is because by using just the link, I am trying to access the object with no authentication. But by using the button within the bucket, I have been authenticated.
+<br />
+<br />
 <img src="https://imgur.com/cex95L9.png" height="80%" width="80%"/>
 <br />
 <br />
