@@ -307,6 +307,99 @@ Once that's been completed, I will return to the bucket, select it again, and cl
 <br />
 <br />
 
+<h2>CloudFormation Basics:</h2>
+
+<p align="center">
+<br />
+In this section, I learned the CloudFormation basics, and how to use a CloudFormation template to create and delete an EC2 instance within AWS. 
+<br />
+<br />
+First, I created a stack uploading the ready made template that is pictured below.
+<br />
+<br />
+<img src="https://imgur.com/MWyPt39.png" height="80%" width="80%"/>
+<br />
+<br />
+When uploading a template to CloudFormation, it is actually uploading the template directly to an S3 bucket that it creates automatically.
+<br />
+<br />
+<img src="https://imgur.com/P3fttKV.png" height="80%" width="80%"/>
+<br />
+<br />
+Naming the stack. You'll see, the LatestAmiID and SSHandWebLocation are set to default at those values because that is what's set in the template.
+<br />
+<br />
+<img src="https://imgur.com/DtYxWcI.png" height="80%" width="80%"/>
+<br />
+<br />
+I am not changing any of the advanced options in this because it's just a basic overview.
+<br />
+<br />
+<img src="https://imgur.com/2TSYaYv.png" height="80%" width="80%"/>
+<br />
+<br />
+By using CloudFormation, I am actually creating an IAM role, so I need to check the box within Capabilities.
+<br />
+<br />
+<img src="https://imgur.com/K28ybgW.png" height="80%" width="80%"/>
+<br />
+<br />
+After creating the stack, it took me to inside the stack. By clicking on events, I could watch the actual creation in progess for each resource.
+<br />
+<br />
+<img src="https://imgur.com/aCgyKpl.png" height="80%" width="80%"/>
+<br />
+<br />
+By clicking on outputs tab, I could also see a list of all of the outputs that were generated from the stack.
+<br />
+<br />
+They match the outputs that are listed inside the CloudFormation template that I uploaded. Same goes for the resources tab.
+<br />
+<br />
+<img src="https://imgur.com/DakM7CG.png" height="80%" width="80%"/>
+<br />
+<br />
+From the resources tab, you can see the EC2 instance that was created. By clicking on it, it'll take you to the actual resource inside AWS.
+<br />
+<br />
+Once there, I right clicked on the instance and clicked connect. Earlier I connected to my instance via a key pair and SSH, but this time I am connecting to it via Session Manager.
+<br />
+<br />
+It is a lot quicker this way and if I type the command, bash, it allows me to run normal linux commands.
+<br />
+<br />
+<img src="https://imgur.com/XJkWQrK.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/rkN9BcX.png" height="80%" width="80%"/>
+<br />
+<br />
+Lastly, I will go back to the CloudFormation console to delete the stack along with all of its resources.
+<br />
+<br />
+The stack will delete all of the logical resources and then all of the corresponding physical resources. It cleans up after itself.
+<br />
+<br />
+I can watch it delete the resources just like how I watched it create the resources.
+<br />
+<br />
+<img src="https://imgur.com/VRzb5Yp.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/tcCpLEo.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/BurYSC3.png" height="80%" width="80%"/>
+<br />
+<br />
+ 
+<h2>CloudWatch (CW) Basics:</h2>
+
+<p align="center">
+<br />
+
+
+
 
 <p align="center">
 <br />
