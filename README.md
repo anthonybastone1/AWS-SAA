@@ -395,6 +395,165 @@ I can watch it delete the resources just like how I watched it create the resour
 
 <p align="center">
 <br />
+Getting experience interacting with CloudWatch.
+<br />
+<br />
+Launched a new instance named CloudwatchTest and used an Amazon Linux machine image. Will connect to this instance using EC2 instance connect intead of SSH Client, so we will proceed without a key pair.
+<br />
+<br />
+<img src="https://imgur.com/DyXf4qz.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/ISXT9G4.png" height="80%" width="80%"/>
+<br />
+<br />
+Named the security group and security group description to CloudwatchSG.
+<br />
+<br />
+<img src="https://imgur.com/OKB4kXT.png" height="80%" width="80%"/>
+<br />
+<br />
+Launched the instance.
+<br />
+<br />
+<img src="https://imgur.com/NzbFcc3.png" height="80%" width="80%"/>
+<br />
+<br />
+Opened the CloudWatch service in a new tab to create an alarm.
+<br />
+<br />
+<img src="https://imgur.com/LxwhbYC.png" height="80%" width="80%"/>
+<br />
+<br />
+Clicked Create Alarm > Select Metric > EC2 > Per-Instance Metrics
+<br />
+<br />
+<img src="https://imgur.com/LxwhbYC.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/bf3AL5r.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/Nsn8dtr.png" height="80%" width="80%"/>
+<br />
+<br />
+Then located the CloudwatchTest instance ID and found and selected CPUUtilization.
+<br />
+<br />
+<img src="https://imgur.com/TiPzrI3.png" height="80%" width="80%"/>
+<br />
+<br />
+The conditions that were selected were Static for the threshold type, and Greater/Equal to 15% for the CPUUtilization.
+<br />
+<br />
+<img src="https://imgur.com/iX9f0AN.png" height="80%" width="80%"/>
+<br />
+<br />
+Since this is not in production usage, we can remove the alarm state trigger.
+<br />
+<br />
+<img src="https://imgur.com/YrN63Pb.png" height="80%" width="80%"/>
+<br />
+<br />
+Named the alarm CloudwatchTestHighCPU, left everything else as is, then created the alarm.
+<br />
+<br />
+<img src="https://imgur.com/StYXso7.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/c2wmF7Z.png" height="80%" width="80%"/>
+<br />
+<br />
+While CloudWatch is gathering CPU data, we can go back to the instance and connect to it via EC2 Instance Connect.
+<br />
+<br />
+<img src="https://imgur.com/eapmdYl.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/axch7MK.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/AY4TEat.png" height="80%" width="80%"/>
+<br />
+<br />
+Installed the application, stress, on this EC2 instance to put artificial CPU load on the system in order to see how CloudWatch reacts.
+<br />
+<br />
+To install stress, run the following command: sudo yum install stress -y
+<br />
+<br />
+<img src="https://imgur.com/tRS8o1v.png" height="80%" width="80%"/>
+<br />
+<br />
+To run the stress application, you type stress. You can also pull up the help menu by running the command stress --help
+<br />
+<br />
+<img src="https://imgur.com/w60BQQC.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we'll run stress and specify the number of CPUs to use. To do this, type stress -c 1 -t 3600
+<br />
+<br />
+This will run the stress for 3,600 seconds so we can see the metrics that are being monitored by CloudWatch.
+<br />
+<br />
+<img src="https://imgur.com/wiK23UJ.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/wiK23UJ.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we can go back to the CloudWatch console where the alarm that we've is, and create and click into it to view the metrics.
+<br />
+<br />
+<img src="https://imgur.com/qPbE4vg.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/LamDs0B.png" height="80%" width="80%"/>
+<br />
+<br />
+Once CloudWatch detects the additional CPU load and the CPUUtilization is greather than or equal to the 15% threshold that we've set, the alarm state will change from OK to In Alarm.
+<br />
+<br />
+The reason we don't see the alarm state change in the screenshot below is because it takes a few minutes between when the graph shows the CPUUtilization change and the actual alarm state change. However, it did in fact change to In Alarm in bright red letters.
+<br />
+<br />
+<img src="https://imgur.com/Z5Q0D3J.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we can go back to the EC2 instance and exit out of the stress utility by pressing COMMAND+C.
+<br />
+<br />
+By doing this, the artificial CPU load will be removed and the instance will gradually move back down to its normal levels.
+<br />
+<br />
+<img src="https://imgur.com/3QVaW3x.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/J2KFoFR.png" height="80%" width="80%"/>
+<br />
+<br />
+As always, we will now clean up our work by deleting the alarm, terminating the instance, and deleting the CloudwatchSG security group.
+<br />
+<br />
+<img src="https://imgur.com/WvvTK8S.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/eFZjOI3.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/dFqyDvt.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/VwZpaZ7.png" height="80%" width="80%"/>
+<br />
+<br />
+ 
+<h2>Route53 (R53) Fundamentals:</h2>
+
+<p align="center">
+<br />
+
 
 
 
