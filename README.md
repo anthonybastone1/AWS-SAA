@@ -572,12 +572,74 @@ After creating the stack, we'll open up the demo yaml file inside Visual Studio 
 <img src="https://imgur.com/yUNXXKR.png" height="80%" width="80%"/>
 <br />
 <br />
-Now we can go back to CloudFormation and see that the resources have been created.
+Now we can go back to CloudFormation and see that the resources have been created within the stack.
 <br />
 <br />
 <img src="https://imgur.com/xqvlliB.png" height="80%" width="80%"/>
 <br />
 <br />
+Now if we open up the sally IAM user by clicking the link within the resources, we'll see that the IAM user, sally, has an attached managed policy which we'll utitlize next. This is the policy that was created with our deployment.
+<br />
+<br />
+<img src="https://imgur.com/GkelLBq.png" height="80%" width="80%"/>
+<br />
+<br />
+If we click on dashboard from our menu on the left, we can copy the IAM user sign-in link and then open up a private browser window to paste the link and go to it. This is so we aren't logged out of our current account when attempting to sign into the sally account.
+<br />
+<br />
+<img src="https://imgur.com/q0xBmk9.png" height="80%" width="80%"/>
+<br />
+<br />
+We need to get the username for Sally now. To do this, go back to CloudFormation > Outputs, and copy the username for sally.
+<br />
+<br />
+<img src="https://imgur.com/YFyqu3C.png" height="80%" width="80%"/>
+<br />
+<br />
+Paste the username and password, then we see we're prompted to create a new password. This is because of the managed policy attached to the IAM user.
+<br />
+<br />
+<img src="https://imgur.com/q0xBmk9.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/4Q0Mt5i.png" height="80%" width="80%"/>
+<br />
+<br />
+Now that we're logged into the sally IAM user, we can maneuver around and see by the error messages that sally currently does not have any permissions assigned.
+<br />
+<br />
+This just proves that an IAM user has no permissions when they first get created in an AWS account.
+<br />
+<br />
+<img src="https://imgur.com/s6lf3CR.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/EzGOTnY.png" height="80%" width="80%"/>
+<br />
+<br />
+Since we now understand that, we'll open up one of our demo files than contains the file s3_fulladmin.json.
+<br />
+<br />
+This is a json policy document that grants full access to any S3 actions on any S3 resource.
+<br />
+<br />
+<img src="https://imgur.com/hMSijb5.png" height="80%" width="80%"/>
+<br />
+<br />
+In order to attach this policy, we will do the following:
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <p align="center">
