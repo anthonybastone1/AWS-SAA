@@ -18,6 +18,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 <br/>[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-root-user-accounts-general-and-production), [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-user-accounts-iamadmin), [Access Keys](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#access-keys), [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#virtual-private-cloud-vpc), [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups), [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-storage-service-s3), [CloudFormation (CFN) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudformation-basics), [CloudWatch (CW) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudwatch-cw-basics)
 
 - IAM, Accounts, and AWS Organizations
+<br/>[Simple Identity Permissions]
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
@@ -549,13 +550,34 @@ As always, we will now clean up our work by deleting the alarm, terminating the 
 <br />
 <br />
  
-<h2>Route53 (R53) Fundamentals:</h2>
+<h2>Simple Identity Permissions:</h2>
 
 <p align="center">
 <br />
-
-
-
+Learning how to assign permissions to IAM users within.
+<br />
+<br />
+The study material that I am using included some demo files to download that will be used later on, and a 1-Click Deployment.
+<br />
+<br />
+The 1-Click Deployment will allow us to use CloudFormation to apply a template that will create an IAM named Sally. It will also create two S3 buckets and a managed policy.
+<br />
+<br />
+<img src="https://imgur.com/cXUJGUy.png" height="80%" width="80%"/>
+<br />
+<br />
+After creating the stack, we'll open up the demo yaml file inside Visual Studio to see what it does and the resources that it will create, along with the managed policy.
+<br />
+<br />
+<img src="https://imgur.com/yUNXXKR.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we can go back to CloudFormation and see that the resources have been created.
+<br />
+<br />
+<img src="https://imgur.com/xqvlliB.png" height="80%" width="80%"/>
+<br />
+<br />
 
 
 <p align="center">
