@@ -18,7 +18,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 <br/>[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-root-user-accounts-general-and-production), [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-user-accounts-iamadmin), [Access Keys](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#access-keys), [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#virtual-private-cloud-vpc), [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups), [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-storage-service-s3), [CloudFormation (CFN) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudformation-basics), [CloudWatch (CW) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudwatch-cw-basics)
 
 - IAM, Accounts, and AWS Organizations
-<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions)
+<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
@@ -759,6 +759,137 @@ Third, go back to our CloudFormation tab, select the IAM stack, and click delete
 <br />
 <br />
 <img src="https://imgur.com/ggylSUk.png" height="80%" width="80%"/>
+<br />
+<br />
+ 
+<h2>IAM Groups:</h2>
+
+<p align="center">
+<br />
+In this section, we'll use the same architecture that we had in the sally IAM user demonstration prior to this. But we'll migrate the permissions that the sally IAM user has from the user to a group that sally is a member of.
+<br />
+<br />
+So once again, we'll use the 1-Click Deployment that was provided to us and create the new stack.
+<br />
+<br />
+<img src="https://imgur.com/45DIzHr.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we'll go to the S3 console, click on the catpics bucket, and upload one of our demo files.
+<br />
+<br />
+<img src="https://imgur.com/pHzqmNM.png" height="80%" width="80%"/>
+<br />
+<br />
+We'll now do the same in the animalpics bucket.
+<br />
+<br />
+<img src="https://imgur.com/yE4TRxd.png" height="80%" width="80%"/>
+<br />
+<br />
+Once that's done, we'll go back to CloudFormation and do the following:
+<br />
+<br />
+Click on Resources > Click on the sally user > Add permissions > Select AllowAllS3ExceptCats > Next > Add permissions
+<br />
+<br />
+<img src="https://imgur.com/UdpVGaG.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/BAAu8L1.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/9uYHzqZ.png" height="80%" width="80%"/>
+<br />
+<br />
+Navigate to the IAM dashboard, copy the IAM sign-in link for the general account, and open up a private browser window again.
+<br />
+<br />
+<img src="https://imgur.com/pWDj8k0.png" height="80%" width="80%"/>
+<br />
+<br />
+Return to CloudFormation, select Outputs, and copy the sallyusername.
+<br />
+<br />
+<img src="https://imgur.com/UhLokfv.png" height="80%" width="80%"/>
+<br />
+<br />
+Paste the username in the designated box in the private browser.
+<br />
+<br />
+Return to CloudFormation again, select Parameters, and copy the sallypassword.
+<br />
+<br />
+<img src="https://imgur.com/DdtjcAr.png" height="80%" width="80%"/>
+<br />
+<br />
+Paste the password in the designated box in the private browser and sign-in.
+<br />
+<br />
+<img src="https://imgur.com/syUG1xD.png" height="80%" width="80%"/>
+<br />
+<br />
+We can navigate over to the S3 console to verify that sally has access to the buckets.
+<br />
+<br />
+We see sally has access to the animalpics bucket, but not the catpics bucket, which was intentional.
+<br />
+<br />
+<img src="https://imgur.com/hJttyh0.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/8K6i1aQ.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we can go back to the other browser window where we logged into the general account as the IAM admin user and make the modifications to the permissions.
+<br />
+<br />
+We'll change the permissions over to the using group rather than directly on the sally user.
+<br />
+<br />
+So we will navigate over to the sally user. Remember this can be done by clicking on the resources tab in the CloudFormation stack, and following the sally user link.
+<br />
+<br />
+Once there, we will remove the AllowAllS3ExceptCats managed policy from sally. This will remove all permissions sally had within S3.
+<br />
+<br />
+Click user groups on the left hand side of the screen, then create group.
+<br />
+<br />
+Name the group and attach the same managed policy that sally had directly on her user (AllowAllS3ExceptCats).
+<br />
+<br />
+<img src="https://imgur.com/0Oui6bv.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/EbLNv3x.png" height="80%" width="80%"/>
+<br />
+<br />
+From here, we'll click add users, and add the sally IAM user to the group.
+<br />
+<br />
+<img src="https://imgur.com/NS6U5Mk.png" height="80%" width="80%"/>
+<br />
+<br />
+So now sally has been added to the developers group, and the developers group has an attached managed policy that allows them to access everything on S3 except the catpics bucket.
+<br />
+<br />
+This can be verified just like before where we navigate over to the private browser where we're logged into the sally IAM user account, and confirm sally's access.
+<br />
+<br />
+Lastly, it's time to clean up our account. In the developers group, we'll navigate to permissions and remove the AllowAllS3ExceptCats managed policy, empty the buckets in the S3 console, and delete the IAM stack in CloudFormation.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
