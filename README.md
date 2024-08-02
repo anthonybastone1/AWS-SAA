@@ -620,23 +620,145 @@ This just proves that an IAM user has no permissions when they first get created
 Since we now understand that, we'll open up one of our demo files than contains the file s3_fulladmin.json.
 <br />
 <br />
-This is a json policy document that grants full access to any S3 actions on any S3 resource.
+This is a JSON policy document that grants full access to any S3 actions on any S3 resource.
 <br />
 <br />
 <img src="https://imgur.com/hMSijb5.png" height="80%" width="80%"/>
 <br />
 <br />
-In order to attach this policy, we will do the following:
-
-
-
-
-
-
-
-
-
-
+In order to assign this policy to our sally user as an inline policy, we will do the following:
+<br />
+<br />
+Copy the text within the file > Go back to the IAM console > Select users on the left > Open the sally IAM users > Add permissions > Create inline policy
+<br />
+<br />
+<img src="https://imgur.com/vUVd2OC.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/SmGTNjY.png" height="80%" width="80%"/>
+<br />
+<br />
+Next, select the JSON tab, delete the text that is already present and paste the text that was copied from our own JSON file.
+<br />
+<br />
+Click review policy, name it (s3admininline), and create.
+<br />
+<br />
+<img src="https://imgur.com/6s140DR.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/xX7BADo.png" height="80%" width="80%"/>
+<br />
+<br />
+Now if we go back to the private browser and click refresh, we can see that sally now has access to the S3 buckets.
+<br />
+<br />
+<img src="https://imgur.com/KLxOi5V.png" height="80%" width="80%"/>
+<br />
+<br />
+To demonstrate that we have full access to the buckets, we'll go into both the animalpics bucket and catpics bucket and upload one of the demo files that we downloaded at the beginning.
+<br />
+<br />
+<img src="https://imgur.com/qLyiuzJ.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/YDV98nQ.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/aLNckdy.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/GIwPH4d.png" height="80%" width="80%"/>
+<br />
+<br />
+From here I'll focus on the catpics bucket, since it will be the same for each, just a different image.
+<br />
+<br />
+We can click into the bucket, and click the open tab in the top right. This will open a new tab with the file that we uploaded into the bucket.
+<br />
+<br />
+<img src="https://imgur.com/o269Y62.png" height="80%" width="80%"/>
+<br />
+<br />
+The same process can be repeated in the animalpics bucket, and an image of a dog will appear. So now we have confirmed that we have full access to these buckets.
+<br />
+<br />
+Next, we'll go back to the IAM console in the other browser, open up the sally user, and delete the s3admineinline inline policy that we added.
+<br />
+<br />
+After doing so, we can see that we lose access to the S3 buckets that we previously had full access to.
+<br />
+<br />
+<img src="https://imgur.com/R8KYZdH.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/BB3bQRF.png" height="80%" width="80%"/>
+<br />
+<br />
+Since our sally user has been returned to its previous state, we will attach a managed policy this time, specifically AllowALLS3ExceptCats.
+<br />
+<br />
+This managed policy was created by the CloudFormation template we used at the beginning.
+<br />
+<br />
+<img src="https://imgur.com/tMk8DMi.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/VTpF11j.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/RlLlrNA.png" height="80%" width="80%"/>
+<br />
+<br />
+Once we've added that managed policy, we can see exactly what it does by clicking on it.
+<br />
+<br />
+This particular policy allows any S3 actions on any resource, and denies any S3 actions on the catpics bucket and any objects in the catpics bucket.
+<br />
+<br />
+<img src="https://imgur.com/ZMyUmNc.png" height="80%" width="80%"/>
+<br />
+<br />
+If we go back to the sally user in the private browser, we will be able to interact with any of the buckets in S3 apart from the catpics bucket and anything that's inside the catpics bucket.
+<br />
+<br />
+<img src="https://imgur.com/2fgIAjJ.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/T4fBm3M.png" height="80%" width="80%"/>
+<br />
+<br />
+If we go back to buckets and open the animalpics bucket, we are able to access it and can open the object thor.jpg, where we are able to see the photo of a dog.
+<br />
+<br />
+<img src="https://imgur.com/7zYds5R.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/MT8YrBa.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/ryPjNLy.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we'll delete everything that we've created in this lesson just to gain experience with cleaning up resources.
+<br />
+<br />
+First we'll delete the managed policy from the sally IAM user.
+<br />
+<br />
+<img src="https://imgur.com/PROB81y.png" height="80%" width="80%"/>
+<br />
+<br />
+Second, as the IAM admin user, empty the catpics and animalpics buckets in S3.
+<br />
+<br />
+<img src="https://imgur.com/FI4cG3z.png" height="80%" width="80%"/>
+<br />
+<br />
+Third, go back to our CloudFormation tab, select the IAM stack, and click delete.
+<br />
+<br />
+<img src="https://imgur.com/ggylSUk.png" height="80%" width="80%"/>
 
 
 
