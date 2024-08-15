@@ -18,7 +18,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 <br/>[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-root-user-accounts-general-and-production), [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-user-accounts-iamadmin), [Access Keys](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#access-keys), [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#virtual-private-cloud-vpc), [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups), [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-storage-service-s3), [CloudFormation (CFN) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudformation-basics), [CloudWatch (CW) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudwatch-cw-basics)
 
 - IAM, Accounts, and AWS Organizations
-<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups)
+<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups), [AWS Organizations](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-organizations)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
@@ -878,16 +878,127 @@ This can be verified just like before where we navigate over to the private brow
 <br />
 <br />
 Lastly, it's time to clean up our account. In the developers group, we'll navigate to permissions and remove the AllowAllS3ExceptCats managed policy, empty the buckets in the S3 console, and delete the IAM stack in CloudFormation.
+<br />
+<br />
 
+<h2>AWS Organizations:</h2>
 
-
-
-
-
-
-
-
-
+<p align="center">
+<br />
+Here, we will create the AWS account structure that we'll be using for the rest of the study.
+<br />
+<br />
+Login as the IAM admin user for the general AWS account. 
+<br />
+<br />
+<img src="https://imgur.com/0Vwivue.png" height="80%" width="80%"/>
+<br />
+<br />
+Move to the AWS Organizations part of the console and create an organization.
+<br />
+<br />
+It will convert the standard AWS general account to be the management account of the organization.
+<br />
+<br />
+<img src="https://imgur.com/zNgMnYg.png" height="80%" width="80%"/>
+<br />
+<br />
+Now open a new web browser and login to the production AWS that we created at the beginning of this study.
+<br />
+<br />
+Click the account dropdown in the top right corner and copy the Account ID for the production account.
+<br />
+<br />
+Go back to the AWS general account, click Add an AWS account, Invite an existing AWS account, and paste the Account ID of the production account. Lastly, click Send invitation at the bottom of the page.
+<br />
+<br />
+Go back to the production account and go to the AWS Organizations console.
+<br />
+<br />
+<img src="https://imgur.com/3VL1SH2.png" height="80%" width="80%"/>
+<br />
+<br />
+Select invitations from the toolbar on the left.
+<br />
+<br />
+<img src="https://imgur.com/3V3w57k.png" height="80%" width="80%"/>
+<br />
+<br />
+Accept the invitation.
+<br />
+<br />
+<img src="https://imgur.com/ph3Sjp1.png" height="80%" width="80%"/>
+<br />
+<br />
+Now the production account is a member of the AWS organization.
+<br />
+<br />
+<img src="https://imgur.com/wbZ7NK4.png" height="80%" width="80%"/>
+<br />
+<br />
+We can verify this by returning to AWS accounts within the AWS Organizations console, refreshing the page, and seeing both the general and production accounts.
+<br />
+<br />
+Now let's role switch into the production account from the general account and vice versa.
+<br />
+<br />
+We will need to manually add the role since we invited an existing account into the organization. You do not have to do this if you created a new account from within the organization.
+<br />
+<br />
+<img src="https://imgur.com/qwbDIUW.png" height="80%" width="80%"/>
+<br />
+<br />
+Go back to the production account window, navigate to the IAM console, select Roles, and we're going to create a role that can be assumed from the general account.
+<br />
+<br />
+<img src="https://imgur.com/qQh9bQd.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/flJwQ36.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/lZOoGol.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/HAq3aqq.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/hskIXmR.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/WqdBhIX.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/JqZUtXz.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/W05pk2W.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/gmMnNY7.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/0Hsx1QK.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/bBFp9yO.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/yQYTzZt.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/aJlHx3y.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/9auqWTw.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/DF2mtOM.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/jJydFH4.png" height="80%" width="80%"/>
+<br />
+<br />
 
 
 
