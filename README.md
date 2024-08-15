@@ -10,7 +10,7 @@
 <h1>AWS Certified Solutions Architect - Associate Training</h1>
 
 <h2>Description</h2>
-In this repository, you will be able to follow along as I learn how to navigate through AWS. Not only am I learning the concepts and why things are done a certain way, but I am also gaining hands-on experience at the same time. I've chosen to utlize Adrian Cantill's AWS Certified Solutions Architect - Associate course for my training with the end goal of sitting for the exam and receiving my offical certification. 
+In this repository, you will be able to follow along as I learn how to navigate through AWS. Not only am I learning the concepts and why things are done a certain way, but I am also gaining hands-on experience at the same time. I've chosen to utlize Adrian Cantrill's AWS Certified Solutions Architect - Associate course for my training with the end goal of sitting for the exam and receiving my offical certification. 
 
 <h2>Contents</h2>
 
@@ -18,7 +18,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 <br/>[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-root-user-accounts-general-and-production), [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-user-accounts-iamadmin), [Access Keys](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#access-keys), [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#virtual-private-cloud-vpc), [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups), [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-storage-service-s3), [CloudFormation (CFN) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudformation-basics), [CloudWatch (CW) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudwatch-cw-basics)
 
 - IAM, Accounts, and AWS Organizations
-<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups), [AWS Organizations](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-organizations)
+<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups), [AWS Organizations](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-organizations), [Service Control Policies](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#service-control-policies)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
@@ -1074,8 +1074,236 @@ If we click on the role and go to Trust relationships, we see that the role trus
 <img src="https://imgur.com/TtZSAi7.png" height="80%" width="80%"/>
 <br />
 <br />
+ 
+<h2>Service Control Policies:</h2>
 
-
+<p align="center">
+<br />
+Here we'll be learning how to use service control policies to restric what identities within an AWS account can do.
+<br />
+<br />
+First we'll create organizational units (OU) as we'll be creating a hierachical structure.
+<br />
+<br />
+Move to the AWS Organizations console, select the Root container, click Actions, Create new.
+<br />
+<br />
+<img src="https://imgur.com/DWjaFdV.png" height="80%" width="80%"/>
+<br />
+<br />
+We'll start with our production account and create the PROD organizational unit.
+<br />
+<br />
+We will do the same for the developement account and name it that organizational unit, DEV.
+<br />
+<br />
+<img src="https://imgur.com/mGFFKaS.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/RxKBKvs.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we will move the AWS accounts into the relevant organizational units.
+<br />
+<br />
+Currently the general, production, and development accounts are all contained in the Root container.
+<br />
+<br />
+Select the AWS production account, click Actions, then Move.
+<br />
+<br />
+<img src="https://imgur.com/EwC242I.png" height="80%" width="80%"/>
+<br />
+<br />
+Select the PROD organizational unit, then Move AWS account at the bottom.
+<br />
+<br />
+<img src="https://imgur.com/FxW3svH.png" height="80%" width="80%"/>
+<br />
+<br />
+The same will be done for the AWS development account and DEV organizational unit.
+<br />
+<br />
+<img src="https://imgur.com/6tW56tg.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/SlIpAO0.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we've created a simple hierarchical structure within this AWS organization.
+<br />
+<br />
+<img src="https://imgur.com/9q8enEE.png" height="80%" width="80%"/>
+<br />
+<br />
+Now that we've done that, we will switch roles into the AWS production account from the account dropdown and navigate to the S3 console.
+<br />
+<br />
+<img src="https://imgur.com/VVyuAij.png" height="80%" width="80%"/>
+<br />
+<br />
+Create an S3 bucket. Just giving it a name and making sure we are set to us-east-1 region. Click create bucket.
+<br />
+<br />
+<img src="https://imgur.com/80v2Nfb.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/8eEbQDw.png" height="80%" width="80%"/>
+<br />
+<br />
+We'll go inside the bucket and upload a file into it.
+<br />
+<br />
+<img src="https://imgur.com/GZDpccK.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/QOLTrpm.png" height="80%" width="80%"/>
+<br />
+<br />
+Now if we go back into the bucket and click on the file, we can access the samson.jpeg object.
+<br />
+<br />
+<img src="https://imgur.com/jjWZSpx.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/SBDa4Q8.png" height="80%" width="80%"/>
+<br />
+<br />
+This is possible because we assumed the IAM role, OrganizationAccountAccessRole, when we switched roles into the production account.
+<br />
+<br />
+We can confirm this by going to the IAM console and selecting Roles on the left.
+<br />
+<br />
+Open the OrganizationAccountAccessRole and we see that it currently has the AdministratorAccess managed policy attached to it.
+<br />
+<br />
+<img src="https://imgur.com/fUwHysH.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we'll demonstrate how this can be restricted by using service control policies.
+<br />
+<br />
+Switch back to the AWS general account.
+<br />
+<br />
+Go to the AWS Organizations console, click Policies on the left, click on and enable service control policies.
+<br />
+<br />
+<img src="https://imgur.com/fu2fi15.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/opT9WsS.png" height="80%" width="80%"/>
+<br />
+<br />
+As part of this AWS has added the FullAWSAccess managed policy onto the organization.
+<br />
+<br />
+<img src="https://imgur.com/D5Y5td2.png" height="80%" width="80%"/>
+<br />
+<br />
+If we click on the policy and scroll down, we can see the actual policy.
+<br />
+<br />
+<img src="https://imgur.com/L8vyUqG.png" height="80%" width="80%"/>
+<br />
+<br />
+Move back to the service control policies overview and create a policy.
+<br />
+<br />
+We have a policy created in visual studio which allows access to all products and services within AWS except S3.
+<br />
+<br />
+<img src="https://imgur.com/JPrxcHk.png" height="80%" width="80%"/>
+<br />
+<br />
+Name the policy Allow All Except S3.
+<br />
+<br />
+<img src="https://imgur.com/bCL5baK.png" height="80%" width="80%"/>
+<br />
+<br />
+Delete all of the existing json and paste our policy in the text box. Create policy.
+<br />
+<br />
+<img src="https://imgur.com/8m830Wp.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/l3Rv6de.png" height="80%" width="80%"/>
+<br />
+<br />
+Click AWS accounts on the left, select the PROD organizational unit, click on the policies tab.
+<br />
+<br />
+<img src="https://imgur.com/y4Wh0WZ.png" height="80%" width="80%"/>
+<br />
+<br />
+Scroll down and attach our new policy by selecting attach in the applied policies box.
+<br />
+<br />
+<img src="https://imgur.com/Vfzv2DG.png" height="80%" width="80%"/>
+<br />
+<br />
+Select Allow All Except S3 and attach it.
+<br />
+<br />
+<img src="https://imgur.com/3rL57hG.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/meqyJzC.png" height="80%" width="80%"/>
+<br />
+<br />
+Detach the FullAWSAccess policy by selecting it and clicking detach in the applied policies box.
+<br />
+<br />
+<img src="https://imgur.com/eHEGqp6.png" height="80%" width="80%"/>
+<br />
+<br />
+If we switch roles into the AWS production account and try to go to the S3 console, we'll see that it says we don't have permissions to list buckets.
+<br />
+<br />
+This is because we attached the Allow All Except S3 policy.
+<br />
+<br />
+<img src="https://imgur.com/1J2OIJb.png" height="80%" width="80%"/>
+<br />
+<br />
+We can check to see if we have access to other products and services just to make sure our policy is working correctly.
+<br />
+<br />
+Here we navigated to the EC2 console to act as if we were going to launch an instance, and just as written, we have access. Same with everything else.
+<br />
+<br />
+<img src="https://imgur.com/9OFmV9G.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we'll switch roles back to the AWS general account and go over to AWS organizations to attach the FullAWSAccess policy and detach the Allow All Except S3 policy.
+<br />
+<br />
+Once that's complete, we'll switch roles to the production account again, and We can once again access S3 along with all the other services.
+<br />
+<br />
+<img src="https://imgur.com/F7TeRZn.png" height="80%" width="80%"/>
+<br />
+<br />
+<img src="https://imgur.com/Y6MktHS.png" height="80%" width="80%"/>
+<br />
+<br />
+Time to clean up our workspace. First, we will empty the bucket.
+<br />
+<br />
+<img src="https://imgur.com/oyEOslz.png" height="80%" width="80%"/>
+<br />
+<br />
+Next, we will delete the bucket.
+<br />
+<br />
+This also serves as evidence that we have full control over S3 once again due to the fact that we can delete the bucket.
+<br />
+<br />
+<img src="https://imgur.com/9tBh50X.png" height="80%" width="80%"/>
+<br />
+<br />
 
 
 
