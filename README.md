@@ -900,7 +900,7 @@ Move to the AWS Organizations part of the console and create an organization.
 It will convert the standard AWS general account to be the management account of the organization.
 <br />
 <br />
-<img src="https://imgur.com/zNgMnYg.png" height="80%" width="80%"/>
+<img src="https://imgur.com/V8xfIwm.png" height="80%" width="80%"/>
 <br />
 <br />
 Now open a new web browser and login to the production AWS that we created at the beginning of this study.
@@ -933,7 +933,7 @@ Accept the invitation.
 Now the production account is a member of the AWS organization.
 <br />
 <br />
-<img src="https://imgur.com/wbZ7NK4.png" height="80%" width="80%"/>
+<img src="https://imgur.com/QEZHZfL.png" height="80%" width="80%"/>
 <br />
 <br />
 We can verify this by returning to AWS accounts within the AWS Organizations console, refreshing the page, and seeing both the general and production accounts.
@@ -945,7 +945,7 @@ Now let's role switch into the production account from the general account and v
 We will need to manually add the role since we invited an existing account into the organization. You do not have to do this if you created a new account from within the organization.
 <br />
 <br />
-<img src="https://imgur.com/qwbDIUW.png" height="80%" width="80%"/>
+<img src="https://imgur.com/SpBtqqU.png" height="80%" width="80%"/>
 <br />
 <br />
 Go back to the production account window, navigate to the IAM console, select Roles, and we're going to create a role that can be assumed from the general account.
@@ -954,49 +954,124 @@ Go back to the production account window, navigate to the IAM console, select Ro
 <img src="https://imgur.com/qQh9bQd.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/flJwQ36.png" height="80%" width="80%"/>
+Select AWS account for the trusted entity type, select Another AWS account below, enter the AWS general account ID, then next at the bottom.
+<br />
+<br />
+<img src="https://imgur.com/byLW6yC.png" height="80%" width="80%"/>
+<br />
+<br />
+Attach the AdministratorAccess policy.
 <br />
 <br />
 <img src="https://imgur.com/lZOoGol.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/HAq3aqq.png" height="80%" width="80%"/>
+Name the role OrganizationAccountAccessRole. AWS uses this same name when they automatically create the equilvalent role within accounts that you create within the organization.
 <br />
 <br />
-<img src="https://imgur.com/hskIXmR.png" height="80%" width="80%"/>
+Click create role at the bottom.
 <br />
 <br />
-<img src="https://imgur.com/WqdBhIX.png" height="80%" width="80%"/>
+<img src="https://imgur.com/Jpd1We7.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/JqZUtXz.png" height="80%" width="80%"/>
+Click into the role that was just created.
 <br />
 <br />
-<img src="https://imgur.com/W05pk2W.png" height="80%" width="80%"/>
+<img src="https://imgur.com/gadm9Zj.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/gmMnNY7.png" height="80%" width="80%"/>
+Select Trust relationships within the role and we can see that the role trusts the account ID of the AWS general account.
 <br />
 <br />
-<img src="https://imgur.com/0Hsx1QK.png" height="80%" width="80%"/>
+<img src="https://imgur.com/LuCf2UW.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we'll switch into the production account from the general account using role switch.
+<br />
+<br />
+So first, copy the Account ID for the production account, then go back to the browser that has the general account open.
+<br />
+<br />
+Click on the account dropdown menu and select Switch role.
+<br />
+<br />
+<img src="https://imgur.com/h1hjnih.png" height="80%" width="80%"/>
+<br />
+<br />
+Paste the Account ID of the production account.
+<br />
+<br />
+Type the name of the role that was just created (OrganizationAccountAccessRole).
+<br />
+<br />
+Type PROD for the display name.
+<br />
+<br />
+Assign a color.
+<br />
+<br />
+<img src="https://imgur.com/6zazRpP.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we've role switched into the AWS production account as we can see by looking in the top right hand corner.
+<br />
+<br />
+<img src="https://imgur.com/dfkJJ6h.png" height="80%" width="80%"/>
+<br />
+<br />
+Now click Switch back, and we will be taken back to the AWS general account.
+<br />
+<br />
+A shortcut has now been created, which is Role history. This can be used to switch roles more efficiently by using the temporary credentials gained from assuming the role.
+<br />
+<br />
+<img src="https://imgur.com/hUpTNoT.png" height="80%" width="80%"/>
+<br />
+<br />
+Next, from the AWS general account, we will create an AWS Development account within the organization.
+<br />
+<br />
+Instead of inviting an existing account, this time we will create a new one.
+<br />
+<br />
+(I gave the account the wrong name by accident 😅)
 <br />
 <br />
 <img src="https://imgur.com/bBFp9yO.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/yQYTzZt.png" height="80%" width="80%"/>
+<img src="https://imgur.com/0jFJj6D.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/aJlHx3y.png" height="80%" width="80%"/>
+Now just like the other accounts, copy the Account ID for the development account so we can create a new entry in the switch role dialogue to allow us to connect to the AWS development account.
 <br />
 <br />
-<img src="https://imgur.com/9auqWTw.png" height="80%" width="80%"/>
+Select Switch role from the account dropdown and follow the same process that we did for the AWS production account.
 <br />
 <br />
-<img src="https://imgur.com/DF2mtOM.png" height="80%" width="80%"/>
+<img src="https://imgur.com/pNWpnGj.png" height="80%" width="80%"/>
 <br />
 <br />
-<img src="https://imgur.com/jJydFH4.png" height="80%" width="80%"/>
+Now we've switched roles into the AWS development account.
+<br />
+<br />
+We can also see that we now have a new entry under Role history where we can switch directly between all three accounts.
+<br />
+<br />
+<img src="https://imgur.com/wE0lGqj.png" height="80%" width="80%"/>
+<br />
+<br />
+If we go to the IAM console, we can see that AWS has created the OrganizationAccountAccessRole on our behalf.
+<br />
+<br />
+<img src="https://imgur.com/ga9Qucn.png" height="80%" width="80%"/>
+<br />
+<br />
+If we click on the role and go to Trust relationships, we see that the role trusts the same AWS general account ID (our management account).
+<br />
+<br />
+<img src="https://imgur.com/TtZSAi7.png" height="80%" width="80%"/>
 <br />
 <br />
 
