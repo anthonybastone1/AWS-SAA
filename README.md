@@ -18,7 +18,7 @@ In this repository, you will be able to follow along as I learn how to navigate 
 <br/>[AWS Root User Accounts (General and Production)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-root-user-accounts-general-and-production), [IAM User Accounts (iamadmin)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-user-accounts-iamadmin), [Access Keys](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#access-keys), [Virtual Private Cloud (VPC)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#virtual-private-cloud-vpc), [Elastic Compute Cloud (EC2)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#elastic-compute-cloud-ec2-key-pairs-instances-and-security-groups), [Simple Storage Service (S3)](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-storage-service-s3), [CloudFormation (CFN) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudformation-basics), [CloudWatch (CW) Basics](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudwatch-cw-basics)
 
 - IAM, Accounts, and AWS Organizations
-<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups), [AWS Organizations](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-organizations), [Service Control Policies](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#service-control-policies)
+<br/>[Simple Identity Permissions](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#simple-identity-permissions), [IAM Groups](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#iam-groups), [AWS Organizations](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#aws-organizations), [Service Control Policies](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#service-control-policies), [CloudTrail - Organizational Trail](https://github.com/anthonybastone1/AWS-SAA?tab=readme-ov-file#cloudtrail-organizational-trail)
 
 <h2>AWS Root User Accounts (General and Production):</h2>
 
@@ -1304,6 +1304,170 @@ This also serves as evidence that we have full control over S3 once again due to
 <img src="https://imgur.com/9tBh50X.png" height="80%" width="80%"/>
 <br />
 <br />
+ 
+<h2>CloudTrail Organizational Trail:</h2>
+
+<p align="center">
+<br />
+In this CloudTrail portion of the study, we will setup an organizational trail and configure it to log data for all accounts in the organization to S3 and CloudWatch logs.
+<br />
+<br />
+Log into the iamadmin user AWS general account as it serves as the management account for the organization.
+<br />
+<br />
+To setup an organizational trail, you'll always need to be logged into the management account.
+<br />
+<br />
+Now move over to the CloudTrail console.
+<br />
+<br />
+Select Trails on the left hand side and click create trail.
+<br />
+<br />
+<img src="https://imgur.com/bJixnZm.png" height="80%" width="80%"/>
+<br />
+<br />
+Name the trail and enable for all accounts.
+<br />
+<br />
+Select create new S3 bucket.
+<br />
+<br />
+Give the bucket a name.
+<br />
+<br />
+For learning purposes and ease, uncheck log file encryption. In a live production setting, best practice would be to enable log file encryption.
+<br />
+<br />
+Enable log file validation.
+<br />
+<br />
+<img src="https://imgur.com/D5wLdfX.png" height="80%" width="80%"/>
+<br />
+<br />
+Enable CloudWatch Logs and select new.
+<br />
+<br />
+The log group name can remain as the default that AWS has generated.
+<br />
+<br />
+<img src="https://imgur.com/l3oJfGJ.png" height="80%" width="80%"/>
+<br />
+<br />
+Select new IAM Role and give it a name.
+<br />
+<br />
+If you expand policy document, you'll be able to see the exact IAM policy document that will be used to give this role the permissions to interact with CloudWatch Logs.
+<br />
+<br />
+Scroll to the bottom and select next.
+<br />
+<br />
+<img src="https://imgur.com/M2vEn8v.png" height="80%" width="80%"/>
+<br />
+<br />
+Under step 2, we will log only management events and filter down to read and write under API activity.
+<br />
+<br />
+Scroll to the bottom and select next.
+<br />
+<br />
+<img src="https://imgur.com/PU9IpJB.png" height="80%" width="80%"/>
+<br />
+<br />
+We see that an error has occurred. The S3 bucket name that we gave it is not available. This is because S3 is globally unique, so it is being used already by someone else or some other organization.
+<br />
+<br />
+Just click edit at the top and change the bucket name to something that is globally unique, follow the process through again, and create the trail.
+<br />
+<br />
+In the photo below, the bucket name has been changed and we'll continue.
+<br />
+<br />
+<img src="https://imgur.com/rdmIZEa.png" height="80%" width="80%"/>
+<br />
+<br />
+Now we see that the trail has been successfully created.
+<br />
+<br />
+We also see that it is an organizational trail, which means it is now logging any CloudTrail events from all regions in all accounts in this AWS organization.
+<br />
+<br />
+CloudTrail is not in real-time, so it will take some time for data to appear in S3 or CloudWatch Logs.
+<br />
+<br />
+<img src="https://imgur.com/mkaaoUB.png" height="80%" width="80%"/>
+<br />
+<br />
+If we open the link under S3 bucket from the image above, it will take us to the bucket within the S3 console.
+<br />
+<br />
+If we move down through the CloudTrail folder, we eventually get to a few log files.
+<br />
+<br />
+Once we click on one of the files, we're able to open the json log file to see an example of a CloudTrail event. We're able to see the userIdentity that generates the event, the accountId that the event is for, the eventSource, Name, Region, etc.
+<br />
+<br />
+<img src="https://imgur.com/tQ1WEvC.png" height="80%" width="80%"/>
+<br />
+<br />
+Now if we go to the CloudWatch console and click on log then log groups from the left hand side, we're able to see a log group for the CloudTrail that was just created.
+<br />
+<br />
+<img src="https://imgur.com/K2TOXZv.png" height="80%" width="80%"/>
+<br />
+<br />
+Open the log group to see the log streams. The log streams start with your unique organization code, then the account number of the account that it represents, then the region name.
+<br />
+<br />
+<img src="https://imgur.com/BPgBCfM.png" height="80%" width="80%"/>
+<br />
+<br />
+Knowing that, we can go inside one of the log streams that matches our account number to pull the logs for the AWS general account.
+<br />
+<br />
+We can go event further and expand the log entries to see the CloudTrail event, which is formatted the same way as what we saw when we opened the log file earlier in CloudTrail.
+<br />
+<br />
+The only difference when using CloudWatch Logs is that the CloudTrail events also get entered into a log stream in a log group within CloudWatch Logs.
+<br />
+<br />
+<img src="https://imgur.com/9akxoNL.png" height="80%" width="80%"/>
+<br />
+<br />
+Go back to the CloudTrail console and select event history. The event history stores a log of all CloudTrail events for the last 90 days for this particular account event if you don't have a specific trail enabled. 
+<br />
+<br />
+The reason a trail was created was to store that data in S3 as well as put it into CloudWatch Logs which gives us a bit of extra functionality.
+<br />
+<br />
+<img src="https://imgur.com/FKPDW1E.png" height="80%" width="80%"/>
+<br />
+<br />
+Since S3 only provides a limited amount of resource under the free tier, we will have the trail stop logging events.
+<br />
+<br />
+To do so, select trails on the left hand side, open the trail that was created, and click stop logging so no logging will occur into the S3 bucket or into CloudWatch Logs.
+<br />
+<br />
+<img src="https://imgur.com/sVdew80.png" height="80%" width="80%"/>
+<br />
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
